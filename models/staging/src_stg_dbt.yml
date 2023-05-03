@@ -57,3 +57,13 @@ models:
     config:
       materialized: table
       alias: mock_orders
+
+  - name: stg_orders_incremental
+    columns:
+      - name: order_id
+        tests:
+          - not_null
+          - unique
+    config:
+      materialized: incremental
+      alias: incremental_orders
